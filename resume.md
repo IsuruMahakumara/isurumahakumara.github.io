@@ -2,7 +2,10 @@
 
 **Data Scientist**
 
-📧 imahakumara@gmail.com | 📱 +94 (713) 377-500 | 🔗 [LinkedIn](https://www.linkedin.com/in/isuru-mahakumara-631983103/) | 🐙 [GitHub](https://github.com/IsuruMahakumara)
+✉️  imahakumara@gmail.com | 📞  +94 71 33 77 500 | 🔗 LinkedIn: https://www.linkedin.com/in/isuru-mahakumara-631983103/ | 💻 GitHub: https://github.com/IsuruMahakumara | 🌐 Portfolio: https://isurumahakumara.github.io
+
+
+
 
 ---
 
