@@ -52,13 +52,18 @@
               </a>
             </li>
             <li class="navigation-link-item">
+              <a href="/resume">
+                <div class="navigation-link"><span>Resume</span></div>
+              </a>
+            </li>
+            <li class="navigation-link-item">
               <a href="#contact">
                 <div class="navigation-link"><span>Contact</span></div>
               </a>
             </li>
           </ul>
-          <a href="/cv-download">
-            <div download="true" class="navigation-cv-btn btn btn-primary">
+          <a href="/resume">
+            <div class="navigation-cv-btn btn btn-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -78,12 +83,12 @@
                   <path d="m7 10l5 5l5-5"></path>
                 </g>
               </svg>
-              <span>Download CV</span>
+              <span>View Resume</span>
             </div>
           </a>
         </div>
         <button
-          id="mobile-toggle"
+          @click="openMenu"
           aria-expanded="false"
           aria-controls="mobile-overlay"
           aria-label="Open Menu"
@@ -107,7 +112,7 @@
         </button>
       </div>
     </nav>
-    <div id="mobile-overlay" class="navigation-mobile-overlay">
+    <div id="mobile-overlay" class="navigation-mobile-overlay" :class="{ 'is-active': isMobileMenuOpen }">
       <div class="navigation-overlay-header">
         <a href="/">
           <div aria-label="ModelForge Home" class="navigation-brand">
@@ -142,7 +147,7 @@
           </div>
         </a>
         <button
-          id="mobile-close"
+          @click="closeMenu"
           aria-label="Close Menu"
           class="navigation-mobile-close"
         >
@@ -166,30 +171,34 @@
       <div class="navigation-overlay-content">
         <ul class="navigation-mobile-links">
           <li>
-            <a href="#about">
+            <a href="#about" @click="closeMenu">
               <div class="navigation-mobile-link"><span>About</span></div>
             </a>
           </li>
           <li>
-            <a href="#projects">
+            <a href="#projects" @click="closeMenu">
               <div class="navigation-mobile-link"><span>Projects</span></div>
             </a>
           </li>
           <li>
-            <a href="#experience">
+            <a href="#experience" @click="closeMenu">
               <div class="navigation-mobile-link"><span>Experience</span></div>
             </a>
           </li>
           <li>
-            <a href="#contact">
+            <a href="/resume" @click="closeMenu">
+              <div class="navigation-mobile-link"><span>Resume</span></div>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" @click="closeMenu">
               <div class="navigation-mobile-link"><span>Contact</span></div>
             </a>
           </li>
         </ul>
         <div class="navigation-mobile-actions">
-          <a href="/cv-download">
+          <a href="/resume">
             <div
-              download="true"
               class="navigation-cv-btn-mobile btn btn-primary btn-lg"
             >
               <svg
@@ -211,76 +220,47 @@
                   <path d="m7 10l5 5l5-5"></path>
                 </g>
               </svg>
-              <span>Download CV</span>
+              <span>View Resume</span>
             </div>
           </a>
         </div>
       </div>
     </div>
-    <div class="navigation-container2">
-      <div class="navigation-container3">
-        <DangerousHTML
-          html="<script defer data-name='navigation-logic'>
-  (function(){
-    const toggleBtn = document.getElementById('mobile-toggle')
-    const closeBtn = document.getElementById('mobile-close')
-    const overlay = document.getElementById('mobile-overlay')
-    const mobileLinks = document.querySelectorAll('.navigation-mobile-link')
-  
-    function openMenu() {
-      overlay.classList.add('is-active')
-      toggleBtn.setAttribute('aria-expanded', 'true')
-      document.body.style.overflow = 'hidden'
-    }
-  
-    function closeMenu() {
-      overlay.classList.remove('is-active')
-      toggleBtn.setAttribute('aria-expanded', 'false')
-      document.body.style.overflow = ''
-    }
-  
-    toggleBtn.addEventListener('click', openMenu)
-    closeBtn.addEventListener('click', closeMenu)
-  
-    mobileLinks.forEach((link) => {
-      link.addEventListener('click', closeMenu)
-    })
-  
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 767 && overlay.classList.contains('is-active')) {
-        closeMenu()
-      }
-    })
-  })()
-  </script>"
-        ></DangerousHTML>
-      </div>
-    </div>
   </div>
 </template>
 
-<script>
-import DangerousHTML from 'dangerous-html/vue'
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 
-export default {
-  name: 'Navigation',
-  props: {},
-  components: {
-    DangerousHTML,
-  },
+const isMobileMenuOpen = ref(false)
+
+function openMenu() {
+  isMobileMenuOpen.value = true
+  document.body.style.overflow = 'hidden'
 }
+
+function closeMenu() {
+  isMobileMenuOpen.value = false
+  document.body.style.overflow = ''
+}
+
+function handleResize() {
+  if (window.innerWidth > 767 && isMobileMenuOpen.value) {
+    closeMenu()
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped>
 .navigation-container1 {
-  display: contents;
-}
- 
-.navigation-container2 {
-  display: none;
-}
- 
-.navigation-container3 {
   display: contents;
 }
 </style>

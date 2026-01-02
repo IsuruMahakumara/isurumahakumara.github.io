@@ -111,22 +111,22 @@
                 </a>
               </li>
               <li class="footer-link-item">
-                <a href="#">
+                <a href="#projects">
                   <div class="footer-nav-link"><span>Projects</span></div>
                 </a>
               </li>
               <li class="footer-link-item">
-                <a href="#">
-                  <div class="footer-nav-link"><span>Research</span></div>
+                <a href="/resume">
+                  <div class="footer-nav-link"><span>Resume</span></div>
                 </a>
               </li>
               <li class="footer-link-item">
-                <a href="#">
-                  <div class="footer-nav-link"><span>Articles</span></div>
+                <a href="#expertise">
+                  <div class="footer-nav-link"><span>About</span></div>
                 </a>
               </li>
               <li class="footer-link-item">
-                <a href="#">
+                <a href="#contact">
                   <div class="footer-nav-link"><span>Contact</span></div>
                 </a>
               </li>
@@ -138,8 +138,8 @@
               Access technical documentation and professional credentials.
             </p>
             <div class="footer-cta-wrapper">
-              <a href="/cv-download">
-                <div download="true" class="footer-cv-btn btn btn-primary btn-lg">
+              <a href="/resume">
+                <div class="footer-cv-btn btn btn-primary btn-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -159,7 +159,7 @@
                       <path d="m7 10l5 5l5-5"></path>
                     </g>
                   </svg>
-                  <span>Download CV</span>
+                  <span>View Resume</span>
                 </div>
               </a>
             </div>
@@ -169,7 +169,7 @@
           <div class="footer-divider"></div>
           <div class="footer-bottom-content">
             <p class="footer-copyright">
-              © 2026 ModelForge. All rights reserved. Built with Vue.js &amp;
+              © {{ currentYear }} ModelForge. All rights reserved. Built with Vue.js &amp;
               Precision.
             </p>
             <div class="footer-legal-links">
@@ -184,54 +184,17 @@
         </div>
       </div>
     </footer>
-    <div class="footer-container2">
-      <div class="footer-container3">
-        <DangerousHTML
-          html="<script defer data-name='footer-logic'>
-  (function(){
-    /**
-     * Logic for the footer component.
-     * Minimal interaction for accessibility and dynamic date.
-     */
-    const updateCopyrightYear = () => {
-      const copyrightElem = document.querySelector('.footer-copyright')
-      if (copyrightElem) {
-        const currentYear = new Date().getFullYear()
-        copyrightElem.textContent = copyrightElem.textContent.replace('2026', currentYear)
-      }
-    }
-  
-    updateCopyrightYear()
-  })()
-  </script>"
-        ></DangerousHTML>
-      </div>
-    </div>
   </div>
 </template>
 
-<script>
-import DangerousHTML from 'dangerous-html/vue'
+<script setup>
+import { computed } from 'vue'
 
-export default {
-  name: 'Footer',
-  props: {},
-  components: {
-    DangerousHTML,
-  },
-}
+const currentYear = computed(() => new Date().getFullYear())
 </script>
 
 <style scoped>
 .footer-container1 {
-  display: contents;
-}
- 
-.footer-container2 {
-  display: none;
-}
- 
-.footer-container3 {
   display: contents;
 }
 </style>

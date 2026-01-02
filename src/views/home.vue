@@ -21,7 +21,7 @@
             transform complex data into actionable autonomous solutions.
           </p>
           <div class="hero-actions">
-            <a href="#">
+            <a href="/resume">
               <div class="btn btn-primary btn-lg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,10 +39,7 @@
                   ></path>
                   <path d="m7 10l5 5l5-5"></path>
                 </svg>
-                <span>
-                  Download CV
-                  <span v-html="rawcj6w"></span>
-                </span>
+                <span>View Resume</span>
               </div>
             </a>
             <a href="#projects">
@@ -87,7 +84,7 @@
               </p>
             </div>
           </a>
-          <a href="#">
+          <a href="/resume">
             <div class="nav-card">
               <div class="nav-icon-box">
                 <svg
@@ -176,7 +173,7 @@
         <h2 class="section-title">Selected Case Studies</h2>
         <p class="section-content">Impact-driven machine learning solutions.</p>
       </div>
-      <div class="showcase-rail">
+      <div class="showcase-rail" ref="showcaseRail">
         <div class="showcase-card">
           <img
             src="https://images.pexels.com/photos/17486100/pexels-photo-17486100.png?auto=compress&amp;cs=tinysrgb&amp;w=1500"
@@ -428,7 +425,7 @@
         <h2 class="section-title">Peer Endorsements</h2>
         <p class="section-content">What collaborators say about ModelForge.</p>
       </div>
-      <div class="testimonial-rail">
+      <div class="testimonial-rail" ref="testimonialRail">
         <div class="testimonial-card">
           <p class="section-content">
             &quot;The attention to model interpretability while maintaining
@@ -517,7 +514,7 @@
         </div>
       </div>
     </section>
-    <section class="cta-section">
+    <section id="contact" class="cta-section">
       <div class="container">
         <div class="cta-split">
           <div class="cta-content">
@@ -533,7 +530,7 @@
                   <span>Start Conversation</span>
                 </div>
               </a>
-              <a href="#">
+              <a href="/resume">
                 <div class="btn btn-lg btn-outline">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -551,10 +548,7 @@
                     ></path>
                     <path d="m7 10l5 5l5-5"></path>
                   </svg>
-                  <span>
-                    Download CV
-                    <span v-html="rawpad7"></span>
-                  </span>
+                  <span>View Resume</span>
                 </div>
               </a>
             </div>
@@ -563,17 +557,15 @@
             <form
               action="#"
               method="POST"
-              data-form-id="5376bcf3-fc5f-44ee-8882-a245660087dc"
               class="cta-form"
+              @submit.prevent="handleSubmit"
             >
               <div class="form-group">
                 <input
                   type="text"
                   placeholder="Your Name"
-                  required="true"
-                  id="thq_textinput_K3z9"
-                  name="textinput"
-                  data-form-field-id="thq_textinput_K3z9"
+                  required
+                  v-model="formData.name"
                   class="form-input"
                 />
               </div>
@@ -581,29 +573,22 @@
                 <input
                   type="email"
                   placeholder="Your Email"
-                  required="true"
-                  id="thq_textinput_VSNs"
-                  name="textinput"
-                  data-form-field-id="thq_textinput_VSNs"
+                  required
+                  v-model="formData.email"
                   class="form-input"
                 />
               </div>
               <div class="form-group">
                 <textarea
                   placeholder="Tell me about your project"
-                  required="true"
+                  required
                   rows="4"
-                  id="thq_textarea_yTHX"
-                  name="textarea"
-                  data-form-field-id="thq_textarea_yTHX"
+                  v-model="formData.message"
                   class="form-input"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                id="thq_button_BhAI"
-                name="button"
-                data-form-field-id="thq_button_BhAI"
                 class="w-full btn btn-lg btn-accent"
               >
                 Send Message
@@ -613,132 +598,79 @@
         </div>
       </div>
     </section>
-    <div class="home-container2">
-      <div class="home-container3">
-        <DangerousHTML
-          html="<script defer data-name='modelforge-ux'>
-  (function(){
-    const forms = document.querySelectorAll('.cta-form')
-  
-    forms.forEach((form) => {
-      form.addEventListener('submit', (e) => {
-        const inputs = form.querySelectorAll('.form-input')
-        let isValid = true
-  
-        inputs.forEach((input) => {
-          if (!input.checkValidity()) {
-            isValid = false
-            input.style.borderColor = '#e74c3c'
-          } else {
-            input.style.borderColor = 'var(--color-border)'
-          }
-        })
-  
-        if (!isValid) {
-          e.preventDefault()
-        }
-      })
-    })
-  
-    const rails = document.querySelectorAll('.showcase-rail, .testimonial-rail')
-    rails.forEach((rail) => {
-      let isDown = false
-      let startX
-      let scrollLeft
-  
-      rail.addEventListener('mousedown', (e) => {
-        isDown = true
-        startX = e.pageX - rail.offsetLeft
-        scrollLeft = rail.scrollLeft
-      })
-  
-      rail.addEventListener('mouseleave', () => {
-        isDown = false
-      })
-  
-      rail.addEventListener('mouseup', () => {
-        isDown = false
-      })
-  
-      rail.addEventListener('mousemove', (e) => {
-        if (!isDown) return
-        e.preventDefault()
-        const x = e.pageX - rail.offsetLeft
-        const walk = (x - startX) * 2
-        rail.scrollLeft = scrollLeft - walk
-      })
-    })
-  })()
-  </script>"
-        ></DangerousHTML>
-      </div>
-    </div>
     <app-footer></app-footer>
-    <a href="https://play.teleporthq.io/signup">
-      <div aria-label="Sign up to TeleportHQ" class="home-container4">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 19 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="home-icon53"
-        >
-          <path
-            d="M9.1017 4.64355H2.17867C0.711684 4.64355 -0.477539 5.79975 -0.477539 7.22599V13.9567C-0.477539 15.3829 0.711684 16.5391 2.17867 16.5391H9.1017C10.5687 16.5391 11.7579 15.3829 11.7579 13.9567V7.22599C11.7579 5.79975 10.5687 4.64355 9.1017 4.64355Z"
-            fill="#B23ADE"
-          ></path>
-          <path
-            d="M10.9733 12.7878C14.4208 12.7878 17.2156 10.0706 17.2156 6.71886C17.2156 3.3671 14.4208 0.649963 10.9733 0.649963C7.52573 0.649963 4.73096 3.3671 4.73096 6.71886C4.73096 10.0706 7.52573 12.7878 10.9733 12.7878Z"
-            fill="#FF5C5C"
-          ></path>
-          <path
-            d="M17.7373 13.3654C19.1497 14.1588 19.1497 15.4634 17.7373 16.2493L10.0865 20.5387C8.67402 21.332 7.51855 20.6836 7.51855 19.0968V10.5141C7.51855 8.92916 8.67402 8.2807 10.0865 9.07221L17.7373 13.3654Z"
-            fill="#2874DE"
-          ></path>
-        </svg>
-        <span class="home-text21">Built in TeleportHQ</span>
-      </div>
-    </a>
   </div>
 </template>
 
-<script>
-import DangerousHTML from 'dangerous-html/vue'
+<script setup>
+import { ref, onMounted, reactive } from 'vue'
+import { useHead } from '@unhead/vue'
+import AppNavigation from '../components/navigation.vue'
+import AppFooter from '../components/footer.vue'
 
-import AppNavigation from '../components/navigation'
-import AppFooter from '../components/footer'
+useHead({
+  title: 'Jagged Smart Seahorse',
+  meta: [
+    { property: 'og:title', content: 'Jagged Smart Seahorse' },
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://jagged-smart-seahorse-wnmjgn.teleporthq.app/' },
+  ],
+})
 
-export default {
-  name: 'Home',
-  props: {},
-  components: {
-    AppNavigation,
-    DangerousHTML,
-    AppFooter,
-  },
-  data() {
-    return {
-      rawcj6w: ' ',
-      rawpad7: ' ',
-    }
-  },
-  metaInfo: {
-    title: 'Jagged Smart Seahorse',
-    meta: [
-      {
-        property: 'og:title',
-        content: 'Jagged Smart Seahorse',
-      },
-    ],
-    link: [
-      {
-        rel: 'canonical',
-        href: 'https://jagged-smart-seahorse-wnmjgn.teleporthq.app/',
-      },
-    ],
-  },
+const showcaseRail = ref(null)
+const testimonialRail = ref(null)
+
+const formData = reactive({
+  name: '',
+  email: '',
+  message: ''
+})
+
+function handleSubmit() {
+  // Handle form submission
+  console.log('Form submitted:', formData)
+  // Reset form
+  formData.name = ''
+  formData.email = ''
+  formData.message = ''
 }
+
+// Drag scroll functionality for rails
+function setupDragScroll(rail) {
+  if (!rail) return
+  
+  let isDown = false
+  let startX
+  let scrollLeft
+
+  rail.addEventListener('mousedown', (e) => {
+    isDown = true
+    startX = e.pageX - rail.offsetLeft
+    scrollLeft = rail.scrollLeft
+  })
+
+  rail.addEventListener('mouseleave', () => {
+    isDown = false
+  })
+
+  rail.addEventListener('mouseup', () => {
+    isDown = false
+  })
+
+  rail.addEventListener('mousemove', (e) => {
+    if (!isDown) return
+    e.preventDefault()
+    const x = e.pageX - rail.offsetLeft
+    const walk = (x - startX) * 2
+    rail.scrollLeft = scrollLeft - walk
+  })
+}
+
+onMounted(() => {
+  setupDragScroll(showcaseRail.value)
+  setupDragScroll(testimonialRail.value)
+})
 </script>
 
 <style scoped>
@@ -747,68 +679,28 @@ export default {
   display: block;
   min-height: 100vh;
 }
- 
+
 .home-thq-skill-progress-elm1 {
   width: 95%;
 }
- 
+
 .home-thq-skill-progress-elm2 {
   width: 88%;
 }
- 
+
 .home-thq-skill-progress-elm3 {
   width: 82%;
 }
- 
+
 .home-thq-skill-progress-elm4 {
   width: 98%;
 }
- 
+
 .home-thq-skill-progress-elm5 {
   width: 90%;
 }
- 
+
 .home-thq-skill-progress-elm6 {
   width: 85%;
-}
- 
-.home-container2 {
-  display: none;
-}
- 
-.home-container3 {
-  display: contents;
-}
- 
-.home-container4 {
-  right: 50px;
-  border: 1px solid #ffffff5c;
-  bottom: 30px;
-  display: flex;
-  z-index: 22;
-  position: fixed;
-  box-shadow: 5px 5px 10px 0px rgba(31, 31, 31, 0.4);
-  min-height: auto;
-  align-items: center;
-  padding-top: 8px;
-  padding-left: 12px;
-  border-radius: 8px;
-  padding-right: 12px;
-  padding-bottom: 8px;
-  backdrop-filter: blur(6px);
-  background-color: rgba(41, 41, 41, 0.41);
-}
- 
-.home-icon53 {
-  width: 24px;
-  margin-right: 4px;
-}
- 
-.home-text21 {
-  color: white;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
 }
 </style>

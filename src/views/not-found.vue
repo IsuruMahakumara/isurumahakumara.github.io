@@ -10,13 +10,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'NotFound',
-  metaInfo: {
-    title: '404 - Not Found',
-  },
-}
+<script setup>
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: '404 - Not Found',
+})
 </script>
 
 <style scoped>
@@ -29,7 +28,7 @@ export default {
   flex-direction: column;
   justify-content: center;
 }
- 
+
 .not-found-container2 {
   display: flex;
   position: relative;
@@ -37,7 +36,7 @@ export default {
   flex-direction: column;
   justify-content: center;
 }
- 
+
 .not-found-text2 {
   color: rgb(38, 38, 38);
   font-size: 252px;
@@ -46,7 +45,7 @@ export default {
   margin-bottom: -20px;
   letter-spacing: -20px;
 }
- 
+
 .not-found-container3 {
   width: 421px;
   display: flex;
@@ -54,7 +53,7 @@ export default {
   flex-direction: column;
   justify-content: center;
 }
- 
+
 .not-found-text3 {
   text-align: center;
   font-weight: 400;

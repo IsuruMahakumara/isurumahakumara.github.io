@@ -1,13 +1,12 @@
-
-import Vue from 'vue'
+import { createApp } from 'vue'
+import { createHead } from '@unhead/vue'
 import App from './App.vue'
 import router from './router'
-import LottieVuePlayer from '@lottiefiles/vue-lottie-player'
+import './style.css'
 
-Vue.use(LottieVuePlayer)
-Vue.config.productionTip = false
+const app = createApp(App)
+const head = createHead()
 
-new Vue({
-  render: h => h(App),
-  router
-}).$mount('#app')
+app.use(router)
+app.use(head)
+app.mount('#app')
