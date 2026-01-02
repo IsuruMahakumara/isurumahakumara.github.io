@@ -239,7 +239,7 @@
       </section>
 
       <!-- Impact Metrics Section -->
-      <section class="impact-section">
+      <!-- <section class="impact-section">
         <div class="container">
           <div class="impact-grid">
             <div class="impact-card">
@@ -264,10 +264,10 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- CTA Section -->
-      <section class="experience-cta">
+      <!-- <section class="experience-cta">
         <div class="container">
           <h2 class="cta-title">Want to Know More?</h2>
           <p class="cta-description">Download my full resume or get in touch to discuss opportunities.</p>
@@ -284,7 +284,10 @@
             </a>
           </div>
         </div>
-      </section>
+      </section> -->
+
+
+
     </main>
     <app-footer></app-footer>
   </div>

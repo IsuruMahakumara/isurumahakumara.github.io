@@ -142,7 +142,7 @@
       </section>
 
       <!-- CTA Section -->
-      <section class="about-cta">
+      <!-- <section class="about-cta">
         <div class="container">
           <h2 class="cta-title">Let's Connect</h2>
           <p class="cta-description">Interested in collaborating or learning more about my work?</p>
@@ -159,7 +159,9 @@
             </a>
           </div>
         </div>
-      </section>
+      </section> -->
+
+
     </main>
     <app-footer></app-footer>
   </div>

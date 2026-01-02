@@ -1,6 +1,8 @@
 <template>
   <div class="home-container1">
     <app-navigation></app-navigation>
+
+    <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-bg-media">
         <img
@@ -12,12 +14,12 @@
       </div>
       <div class="hero-content">
         <div class="hero-text-col">
-          <span class="hero-badge">AI/ML Engineer &amp; Data Scientist</span>
+          <span class="hero-badge">Data Scientist &amp; AI/ML Engineer</span>
           <h1 class="home-hero-title hero-title">
             Architecting the Future with Intelligence
           </h1>
           <p class="hero-subtitle">
-            Specializing in Deep Learning, Predictive Modeling, and MLOps to
+            Specializing in Artificial Intelligence, Machine Learning Systems, Predictive Analytics, Recommendation Systems and MLOps to
             transform complex data into actionable autonomous solutions.
           </p>
           <div class="hero-actions">
@@ -58,6 +60,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Navigation Section -->
     <section class="nav-features">
       <div class="container">
         <div class="features-grid">
@@ -168,6 +172,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Projects Section -->
     <section id="projects" class="showcase-section">
       <div class="showcase-header">
         <h2 class="section-title">Selected Case Studies</h2>
@@ -240,6 +246,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Expertise Section -->
     <section id="expertise" class="skills-section">
       <div class="container">
         <h2 class="text-center section-title">Core Expertise</h2>
@@ -268,7 +276,7 @@
                 <path d="M6 18a4 4 0 0 1-2-7.464"></path>
                 <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path>
               </svg>
-              <span class="section-subtitle">Deep Learning</span>
+              <span class="section-subtitle">Recommendation Systems</span>
             </div>
             <div class="skill-bar">
               <div class="home-thq-skill-progress-elm1 skill-progress"></div>
@@ -291,7 +299,7 @@
                 <path d="M4 6v6a8 3 0 0 0 16 0V6"></path>
                 <path d="M4 12v6a8 3 0 0 0 16 0v-6"></path>
               </svg>
-              <span class="section-subtitle">Data Engineering</span>
+              <span class="section-subtitle">Predictive Analytics</span>
             </div>
             <div class="skill-bar">
               <div class="home-thq-skill-progress-elm2 skill-progress"></div>
@@ -337,7 +345,7 @@
               >
                 <path d="m18 16l4-4l-4-4M6 8l-4 4l4 4m8.5-12l-5 16"></path>
               </svg>
-              <span class="section-subtitle">Python/PyTorch</span>
+              <span class="section-subtitle"> Data Engineering & Visualization</span>
             </div>
             <div class="skill-bar">
               <div class="home-thq-skill-progress-elm4 skill-progress"></div>
@@ -390,7 +398,9 @@
         </div>
       </div>
     </section>
-    <section class="metrics-section">
+
+    <!-- Metrics Section -->
+    <!-- <section class="metrics-section">
       <div class="container">
         <div class="metrics-grid">
           <div class="metric-card">
@@ -419,8 +429,10 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="testimonials-section">
+    </section> -->
+
+    <!-- Testimonials Section -->
+    <!-- <section class="testimonials-section">
       <div class="showcase-header">
         <h2 class="section-title">Peer Endorsements</h2>
         <p class="section-content">What collaborators say about ModelForge.</p>
@@ -467,7 +479,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
+
+    <!-- Blog Section -->
     <section id="blog" class="blog-section">
       <div class="container">
         <h2 class="text-center section-title">Technical Notes</h2>
@@ -514,6 +528,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Contact Section -->
     <section id="contact" class="cta-section">
       <div class="container">
         <div class="cta-split">
