@@ -169,17 +169,21 @@
           <div class="footer-divider"></div>
           <div class="footer-bottom-content">
             <p class="footer-copyright">
-              © {{ currentYear }} ModelForge. All rights reserved. Built with Vue.js &amp;
+              © {{ currentYear }} Isuru Mahakumara. All rights reserved. Built with Vue.js &amp;
               Precision.
             </p>
-            <div class="footer-legal-links">
+            
+            <!-- Legal Links -->
+            <!-- <div class="footer-legal-links">
               <a href="#">
                 <div class="footer-legal-link"><span>Privacy Policy</span></div>
               </a>
               <a href="#">
                 <div class="footer-legal-link"><span>Terms of Service</span></div>
               </a>
-            </div>
+            </div> -->
+
+
           </div>
         </div>
       </div>
