@@ -37,7 +37,7 @@
         <div class="navigation-desktop-menu">
           <ul class="navigation-links-list">
             <li class="navigation-link-item">
-              <a href="#about">
+              <a href="/about">
                 <div class="navigation-link"><span>About</span></div>
               </a>
             </li>
@@ -47,7 +47,7 @@
               </a>
             </li>
             <li class="navigation-link-item">
-              <a href="#experience">
+              <a href="/experience">
                 <div class="navigation-link"><span>Experience</span></div>
               </a>
             </li>
@@ -57,7 +57,7 @@
               </a>
             </li>
             <li class="navigation-link-item">
-              <a href="#contact">
+              <a href="/contact">
                 <div class="navigation-link"><span>Contact</span></div>
               </a>
             </li>
@@ -171,7 +171,7 @@
       <div class="navigation-overlay-content">
         <ul class="navigation-mobile-links">
           <li>
-            <a href="#about" @click="closeMenu">
+            <a href="/about" @click="closeMenu">
               <div class="navigation-mobile-link"><span>About</span></div>
             </a>
           </li>
@@ -181,7 +181,7 @@
             </a>
           </li>
           <li>
-            <a href="#experience" @click="closeMenu">
+            <a href="/experience" @click="closeMenu">
               <div class="navigation-mobile-link"><span>Experience</span></div>
             </a>
           </li>
@@ -191,7 +191,7 @@
             </a>
           </li>
           <li>
-            <a href="#contact" @click="closeMenu">
+            <a href="/contact" @click="closeMenu">
               <div class="navigation-mobile-link"><span>Contact</span></div>
             </a>
           </li>
