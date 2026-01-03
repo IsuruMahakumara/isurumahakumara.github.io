@@ -1,20 +1,20 @@
 [
   {
-    "slug": "customer-segmentation",
-    "title": "Customer Segmentaion for lifecycle operations ",
-    "summary": "Using unsupervised learning to optimize email marketing in subscription e-commerce.",
+    "slug": "early-churn-prediction",
+    "title": "Early-Stage Customer Churn Prediction",
+    "summary": "Predicting early churn for subscription e-commerce using ML.",
     "tags": [
       "ML",
       "Python",
       "E-commerce"
     ],
     "featured": true,
-    "date": "2025-11-20"
+    "date": "2026-01-03"
   },
   {
-    "slug": "early-churn-prediction",
-    "title": "Early-Stage Customer Churn Prediction",
-    "summary": "Predicting early churn for subscription e-commerce using ML.",
+    "slug": "customer-segmentation",
+    "title": "Customer Segmentaion for lifecycle operations ",
+    "summary": "Using unsupervised learning to optimize email marketing in subscription e-commerce.",
     "tags": [
       "ML",
       "Python",
