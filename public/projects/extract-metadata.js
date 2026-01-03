@@ -3,18 +3,19 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 
-// Fix for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Configuration - adjusting to your actual path
-const PROJECTS_DIR = path.join(__dirname, 'public', 'projects');
-const OUTPUT_FILE = path.join(__dirname, 'public', 'projects.json');
+// Since the script is inside 'public/projects':
+// 1. The source is in 'projects-markdown'
+const PROJECTS_DIR = path.join(__dirname, 'projects-markdown'); 
+// 2. The output goes in the same folder as the script
+const OUTPUT_FILE = path.join(__dirname, 'projects.json');
 
 function extractMetadata() {
     try {
         if (!fs.existsSync(PROJECTS_DIR)) {
-            console.error(`Directory not found: ${PROJECTS_DIR}`);
+            console.error(`❌ Directory not found: ${PROJECTS_DIR}`);
             return;
         }
 
@@ -29,8 +30,11 @@ function extractMetadata() {
                 return { ...data };
             });
 
+        // Optional: Sort by date (newest first)
+        metadataList.sort((a, b) => new Date(b.date) - new Date(a.date));
+
         fs.writeFileSync(OUTPUT_FILE, JSON.stringify(metadataList, null, 2));
-        console.log(`✅ Success! JSON created at: ${OUTPUT_FILE}`);
+        console.log(`✅ Success! Created ${OUTPUT_FILE}`);
     } catch (error) {
         console.error('❌ Error:', error.message);
     }
