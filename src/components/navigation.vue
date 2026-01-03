@@ -42,7 +42,7 @@
               </a>
             </li>
             <li class="navigation-link-item">
-              <a href="#projects">
+              <a href="/projects">
                 <div class="navigation-link"><span>Projects</span></div>
               </a>
             </li>
@@ -176,7 +176,7 @@
             </a>
           </li>
           <li>
-            <a href="#projects" @click="closeMenu">
+            <a href="/projects" @click="closeMenu">
               <div class="navigation-mobile-link"><span>Projects</span></div>
             </a>
           </li>

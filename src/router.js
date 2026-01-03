@@ -5,6 +5,7 @@ import About from './views/about.vue'
 import Experience from './views/experience.vue'
 import Contact from './views/contact.vue'
 import Resume from './views/resume.vue'
+import Projects from './views/projects.vue'
 import NotFound from './views/not-found.vue'
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
     name: 'CV Download',
     path: '/cv-download',
     component: Resume,
+  },
+  {
+    name: 'Projects',
+    path: '/projects',
+    component: Projects,
   },
   {
     name: 'NotFound',
