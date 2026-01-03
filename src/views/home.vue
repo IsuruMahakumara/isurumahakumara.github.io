@@ -502,9 +502,9 @@
             <div class="project-tags">
               <span v-for="tag in project.tags" :key="tag" class="project-tag">{{ tag }}</span>
             </div>
-            <router-link :to="`/projects/${project.slug}`">
+            <!-- <router-link :to="`/projects/${project.slug}`">
               <div class="btn btn-link"><span>View Project</span></div>
-            </router-link>
+            </router-link> -->
           </article>
         </div>
       </div>
@@ -721,16 +721,17 @@ onMounted(() => {
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: var(--spacing-sm);
 }
 
 .project-tag {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  background-color: var(--dl-color-gray-800);
-  color: var(--dl-color-gray-300);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+  border-radius: var(--border-radius-full);
 }
 
 .home-thq-skill-progress-elm1 {
