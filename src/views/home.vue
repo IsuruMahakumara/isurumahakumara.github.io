@@ -484,49 +484,27 @@
       </div>
     </section> -->
 
-    <!-- Blog Section -->
-    <section id="blog" class="blog-section">
+    <!-- Projects Section -->
+    <section id="projects" class="blog-section">
       <div class="container">
-        <h2 class="text-center section-title">Technical Notes</h2>
+        <h2 class="text-center section-title">Featured Projects</h2>
         <div class="blog-rail">
-          <article class="blog-card">
-            <span class="blog-date">Oct 12, 2025</span>
+          <article v-for="project in displayedProjects" :key="project.slug" class="blog-card">
+            <span class="blog-date">{{ formatDate(project.date) }}</span>
             <h3 class="section-subtitle">
-              Scaling Transformers for Real-time Inference
+              <router-link :to="`/projects/${project.slug}`" class="project-title-link">
+                {{ project.title }}
+              </router-link>
             </h3>
             <p class="section-content">
-              Techniques for quantization and pruning to achieve sub-10ms latency
-              on edge hardware.
+              {{ project.summary }}
             </p>
-            <a href="#">
-              <div class="btn btn-link"><span>Read More</span></div>
-            </a>
-          </article>
-          <article class="blog-card">
-            <span class="blog-date">Sep 28, 2025</span>
-            <h3 class="section-subtitle">
-              The Ethics of Generative Latent Spaces
-            </h3>
-            <p class="section-content">
-              Exploring bias mitigation strategies in multi-modal foundational
-              models.
-            </p>
-            <a href="#">
-              <div class="btn btn-link"><span>Read More</span></div>
-            </a>
-          </article>
-          <article class="blog-card">
-            <span class="blog-date">Aug 15, 2025</span>
-            <h3 class="section-subtitle">
-              Building Robust Feature Stores with Redis
-            </h3>
-            <p class="section-content">
-              A guide to low-latency feature retrieval for production-grade
-              recommendation engines.
-            </p>
-            <a href="#">
-              <div class="btn btn-link"><span>Read More</span></div>
-            </a>
+            <div class="project-tags">
+              <span v-for="tag in project.tags" :key="tag" class="project-tag">{{ tag }}</span>
+            </div>
+            <router-link :to="`/projects/${project.slug}`">
+              <div class="btn btn-link"><span>View Project</span></div>
+            </router-link>
           </article>
         </div>
       </div>
@@ -625,7 +603,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, reactive } from 'vue'
+import { ref, onMounted, reactive, computed } from 'vue'
 import { useHead } from '@unhead/vue'
 import AppNavigation from '../components/navigation.vue'
 import AppFooter from '../components/footer.vue'
@@ -642,12 +620,39 @@ useHead({
 
 const showcaseRail = ref(null)
 const testimonialRail = ref(null)
+const projects = ref([])
 
 const formData = reactive({
   name: '',
   email: '',
   message: ''
 })
+
+// Display up to 3 projects
+const displayedProjects = computed(() => {
+  return projects.value.slice(0, 3)
+})
+
+// Format date for display
+function formatDate(dateString) {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'short', 
+    day: 'numeric' 
+  })
+}
+
+// Fetch projects from JSON
+async function fetchProjects() {
+  try {
+    const response = await fetch('/projects/projects.json')
+    projects.value = await response.json()
+  } catch (error) {
+    console.error('Error fetching projects:', error)
+  }
+}
 
 function handleSubmit() {
   // Handle form submission
@@ -692,6 +697,7 @@ function setupDragScroll(rail) {
 onMounted(() => {
   setupDragScroll(showcaseRail.value)
   setupDragScroll(testimonialRail.value)
+  fetchProjects()
 })
 </script>
 
@@ -700,6 +706,31 @@ onMounted(() => {
   width: 100%;
   display: block;
   min-height: 100vh;
+}
+
+.project-title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-title-link:hover {
+  color: var(--dl-color-primary-500);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: var(--dl-color-gray-800);
+  color: var(--dl-color-gray-300);
 }
 
 .home-thq-skill-progress-elm1 {
