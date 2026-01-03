@@ -49,7 +49,9 @@
             </a>
           </div>
         </div>
-        <div class="hero-visual-col">
+
+        <!-- Hero Visual Column Avatar -->
+        <!-- <div class="hero-visual-col">
           <div class="hero-avatar-wrapper">
             <img
               src="https://images.pexels.com/photos/5474037/pexels-photo-5474037.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1500"
@@ -57,12 +59,13 @@
               class="hero-avatar"
             />
           </div>
-        </div>
+        </div> -->
+
       </div>
     </section>
 
     <!-- Navigation Section -->
-    <section class="nav-features">
+    <!-- <section class="nav-features">
       <div class="container">
         <div class="features-grid">
           <a href="#projects">
@@ -171,10 +174,10 @@
           </a>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Projects Section -->
-    <section id="projects" class="showcase-section">
+    <!-- <section id="projects" class="showcase-section">
       <div class="showcase-header">
         <h2 class="section-title">Selected Case Studies</h2>
         <p class="section-content">Impact-driven machine learning solutions.</p>
@@ -245,7 +248,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Expertise Section -->
     <section id="expertise" class="skills-section">
@@ -530,7 +533,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="cta-section">
+    <!-- <section id="contact" class="cta-section">
       <div class="container">
         <div class="cta-split">
           <div class="cta-content">
@@ -613,7 +616,10 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
+
+
+
     <app-footer></app-footer>
   </div>
 </template>
