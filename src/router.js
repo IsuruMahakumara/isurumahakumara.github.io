@@ -6,6 +6,7 @@ import Experience from './views/experience.vue'
 import Contact from './views/contact.vue'
 import Resume from './views/resume.vue'
 import Projects from './views/projects.vue'
+import ProjectDetail from './views/project-detail.vue'
 import NotFound from './views/not-found.vue'
 
 const routes = [
@@ -43,6 +44,11 @@ const routes = [
     name: 'Projects',
     path: '/projects',
     component: Projects,
+  },
+  {
+    name: 'ProjectDetail',
+    path: '/projects/:slug',
+    component: ProjectDetail,
   },
   {
     name: 'NotFound',
