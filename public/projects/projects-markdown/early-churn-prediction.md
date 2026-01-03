@@ -4,7 +4,7 @@ title: "Early-Stage Customer Churn Prediction"
 summary: "Predicting early churn for subscription e-commerce using ML."
 tags: ["ML", "Python", "E-commerce"]
 featured: true
-date: "2025-11-20"
+date: "2026-01-03"
 ---
 
 # Early-Stage Customer Churn Prediction in Subscription E-commerce
