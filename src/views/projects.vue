@@ -21,7 +21,9 @@
               <time class="project-date">{{ formatDate(project.date) }}</time>
               <span v-if="project.featured" class="project-featured">Featured</span>
             </div>
-            <h2 class="project-title">{{ project.title }}</h2>
+            <router-link :to="`/projects/${project.slug}`" class="project-title-link">
+              <h2 class="project-title">{{ project.title }}</h2>
+            </router-link>
             <p class="project-summary">{{ project.summary }}</p>
             <div class="project-tags">
               <span 
@@ -148,6 +150,15 @@ onMounted(() => {
   border-radius: var(--border-radius-sm);
 }
 
+.project-title-link {
+  text-decoration: none;
+  display: block;
+}
+
+.project-title-link:hover .project-title {
+  color: var(--color-primary);
+}
+
 .project-title {
   font-size: var(--font-size-xl);
   font-family: var(--font-family-heading);
@@ -155,6 +166,7 @@ onMounted(() => {
   color: var(--color-on-surface);
   margin-bottom: var(--spacing-sm);
   line-height: var(--line-height-heading);
+  transition: color 0.2s ease;
 }
 
 .project-summary {
