@@ -27,7 +27,7 @@
             </div>
             <div class="education-content">
               <h3 class="education-degree">B.Sc (Hons) in Physics</h3>
-              <p class="education-institution">University of Sri Jayewardanepura</p>
+              <a   href="https://science.sjp.ac.lk/phy/"   target="_blank"   rel="noopener noreferrer" >   <p class="education-institution">     University of Sri Jayewardenepura   </p> </a>
               <p class="education-period">Jan 2017 - Dec 2020</p>
               <ul class="education-details">
                 <li>
@@ -88,7 +88,7 @@
       </section>
 
       <!-- Research Highlight Section -->
-      <section class="research-section">
+      <!-- <section class="research-section">
         <div class="container">
           <div class="research-content">
             <span class="research-label">Research Focus</span>
@@ -106,7 +106,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Certifications Section -->
       <section class="certifications-section">
