@@ -7,10 +7,10 @@
       <section class="hero">
         <div class="container">
           <div class="hero-content">
-            <span class="hero-badge">Data Scientist · ML Engineer</span>
+            <span class="hero-badge">Data Scientist · AI Engineer</span>
             <h1 class="hero-title">Isuru Mahakumara</h1>
             <p class="hero-subtitle">
-              Building intelligent systems with machine learning, predictive analytics, and scalable MLOps infrastructure.
+              I’m a Data Scientist and AI Engineer experienced in building production-ready machine learning systems for personalization, prediction, and decision-making. I’ve developed large-scale recommendation systems and churn prediction models used in real-world products, grounded in a strong physics background and rigorous analytical thinking.
             </p>
             <div class="hero-actions">
               <router-link to="/resume" class="btn btn-primary btn-lg">
@@ -31,12 +31,19 @@
           <div class="skills-list">
             <span class="skill-tag">Recommendation Systems</span>
             <span class="skill-tag">Predictive Analytics</span>
+            <span class="skill-tag">Data Visualization</span>
             <span class="skill-tag">MLOps</span>
-            <span class="skill-tag">Data Engineering</span>
-            <span class="skill-tag">Cloud Architecture</span>
+            <span class="skill-tag">ETL</span>
+            <span class="skill-tag">Alibaba Cloud</span>
             <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
             <span class="skill-tag">TensorFlow</span>
             <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Matplotlib</span>
+
           </div>
         </div>
       </section>
