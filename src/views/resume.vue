@@ -5,9 +5,6 @@
       <div class="resume-container">
         <article class="resume">
           <div class="resume-paper">
-            <!-- Resume content rendered here -->
-            <div id="resume" class="resume-content" v-html="resumeContent"></div>
-            
             <!-- PDF download button -->
             <div class="resume-actions">
               <button @click="downloadPDF" class="btn btn-primary btn-lg" :disabled="!isLoaded">
@@ -20,6 +17,9 @@
                 <span>{{ isLoaded ? 'Download PDF' : 'Loading...' }}</span>
               </button>
             </div>
+            
+            <!-- Resume content rendered here -->
+            <div id="resume" class="resume-content" v-html="resumeContent"></div>
           </div>
         </article>
       </div>
@@ -102,7 +102,7 @@ function downloadPDF() {
 }
 
 .resume-actions {
-  padding: 0 3rem 3rem;
+  padding: 1.5rem 3rem 0;
   display: flex;
   justify-content: flex-end;
 }
@@ -231,7 +231,7 @@ function downloadPDF() {
   }
 
   .resume-actions {
-    padding: 0 1.5rem 1.5rem;
+    padding: 1rem 1.5rem 0;
   }
 
   .resume-content :deep(h1) {
