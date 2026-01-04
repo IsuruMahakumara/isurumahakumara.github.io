@@ -1,251 +1,62 @@
 <template>
-  <div class="navigation-container1">
-    <nav class="navigation-root">
-      <div class="navigation-container">
-        <a href="/">
-          <div aria-label="ModelForge Home" class="navigation-brand">
-            <div class="navigation-logo-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M12 18V5m3 8a4.17 4.17 0 0 1-3-4a4.17 4.17 0 0 1-3 4m8.598-6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"
-                  ></path>
-                  <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path>
-                  <path d="M18 18a4 4 0 0 0 2-7.464"></path>
-                  <path
-                    d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"
-                  ></path>
-                  <path d="M6 18a4 4 0 0 1-2-7.464"></path>
-                  <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path>
-                </g>
-              </svg>
-            </div>
-            <span class="navigation-brand-name section-title">ModelForge</span>
-          </div>
-        </a>
-        <div class="navigation-desktop-menu">
-          <ul class="navigation-links-list">
-            <li class="navigation-link-item">
-              <a href="/about">
-                <div class="navigation-link"><span>About</span></div>
-              </a>
-            </li>
-            <li class="navigation-link-item">
-              <a href="/projects">
-                <div class="navigation-link"><span>Projects</span></div>
-              </a>
-            </li>
-            <li class="navigation-link-item">
-              <a href="/experience">
-                <div class="navigation-link"><span>Experience</span></div>
-              </a>
-            </li>
-            <li class="navigation-link-item">
-              <a href="/resume">
-                <div class="navigation-link"><span>Resume</span></div>
-              </a>
-            </li>
-            <li class="navigation-link-item">
-              <a href="/contact">
-                <div class="navigation-link"><span>Contact</span></div>
-              </a>
-            </li>
-          </ul>
-          <a href="/resume">
-            <div class="navigation-cv-btn btn btn-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M12 15V3m9 12v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-                  ></path>
-                  <path d="m7 10l5 5l5-5"></path>
-                </g>
-              </svg>
-              <span>View Resume</span>
-            </div>
-          </a>
-        </div>
-        <button
-          @click="openMenu"
-          aria-expanded="false"
-          aria-controls="mobile-overlay"
-          aria-label="Open Menu"
-          class="navigation-mobile-toggle"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 12h16M4 6h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
-      </div>
-    </nav>
-    <div id="mobile-overlay" class="navigation-mobile-overlay" :class="{ 'is-active': isMobileMenuOpen }">
-      <div class="navigation-overlay-header">
-        <a href="/">
-          <div aria-label="ModelForge Home" class="navigation-brand">
-            <div class="navigation-logo-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M12 18V5m3 8a4.17 4.17 0 0 1-3-4a4.17 4.17 0 0 1-3 4m8.598-6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"
-                  ></path>
-                  <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path>
-                  <path d="M18 18a4 4 0 0 0 2-7.464"></path>
-                  <path
-                    d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"
-                  ></path>
-                  <path d="M6 18a4 4 0 0 1-2-7.464"></path>
-                  <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path>
-                </g>
-              </svg>
-            </div>
-            <span class="navigation-brand-name section-title">ModelForge</span>
-          </div>
-        </a>
-        <button
-          @click="closeMenu"
-          aria-label="Close Menu"
-          class="navigation-mobile-close"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M18 6L6 18M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
-      </div>
-      <div class="navigation-overlay-content">
-        <ul class="navigation-mobile-links">
-          <li>
-            <a href="/about" @click="closeMenu">
-              <div class="navigation-mobile-link"><span>About</span></div>
-            </a>
-          </li>
-          <li>
-            <a href="/projects" @click="closeMenu">
-              <div class="navigation-mobile-link"><span>Projects</span></div>
-            </a>
-          </li>
-          <li>
-            <a href="/experience" @click="closeMenu">
-              <div class="navigation-mobile-link"><span>Experience</span></div>
-            </a>
-          </li>
-          <li>
-            <a href="/resume" @click="closeMenu">
-              <div class="navigation-mobile-link"><span>Resume</span></div>
-            </a>
-          </li>
-          <li>
-            <a href="/contact" @click="closeMenu">
-              <div class="navigation-mobile-link"><span>Contact</span></div>
-            </a>
-          </li>
-        </ul>
-        <div class="navigation-mobile-actions">
-          <a href="/resume">
-            <div
-              class="navigation-cv-btn-mobile btn btn-primary btn-lg"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M12 15V3m9 12v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-                  ></path>
-                  <path d="m7 10l5 5l5-5"></path>
-                </g>
-              </svg>
-              <span>View Resume</span>
-            </div>
-          </a>
-        </div>
-      </div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/experience">Experience</a></li>
+        <li><a href="/resume">Resume</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      
+      <button
+        @click="toggleMenu"
+        :aria-expanded="isOpen"
+        aria-label="Toggle menu"
+        class="nav-toggle"
+      >
+        <svg v-if="!isOpen" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="4" y1="8" x2="20" y2="8"/>
+          <line x1="4" y1="16" x2="20" y2="16"/>
+        </svg>
+        <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="18" y1="6" x2="6" y2="18"/>
+        </svg>
+      </button>
     </div>
-  </div>
+    
+    <Transition name="slide">
+      <div v-if="isOpen" class="nav-mobile">
+        <a href="/" @click="closeMenu">Home</a>
+        <a href="/about" @click="closeMenu">About</a>
+        <a href="/projects" @click="closeMenu">Projects</a>
+        <a href="/experience" @click="closeMenu">Experience</a>
+        <a href="/resume" @click="closeMenu">Resume</a>
+        <a href="/contact" @click="closeMenu">Contact</a>
+      </div>
+    </Transition>
+  </nav>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-const isMobileMenuOpen = ref(false)
+const isOpen = ref(false)
 
-function openMenu() {
-  isMobileMenuOpen.value = true
-  document.body.style.overflow = 'hidden'
+function toggleMenu() {
+  isOpen.value = !isOpen.value
+  document.body.style.overflow = isOpen.value ? 'hidden' : ''
 }
 
 function closeMenu() {
-  isMobileMenuOpen.value = false
+  isOpen.value = false
   document.body.style.overflow = ''
 }
 
 function handleResize() {
-  if (window.innerWidth > 767 && isMobileMenuOpen.value) {
+  if (window.innerWidth > 640 && isOpen.value) {
     closeMenu()
   }
 }
@@ -260,7 +71,119 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.navigation-container1 {
-  display: contents;
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--color-surface);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 40%, transparent);
+}
+
+.nav-inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-3xl);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--color-on-surface-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-primary);
+  transition: width 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-on-surface);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  color: var(--color-on-surface);
+}
+
+.nav-mobile {
+  position: fixed;
+  inset: 0;
+  top: 57px;
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2xl);
+}
+
+.nav-mobile a {
+  color: var(--color-on-surface);
+  text-decoration: none;
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.nav-mobile a:hover {
+  color: var(--color-primary);
+}
+
+/* Transitions */
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+@media (max-width: 640px) {
+  .nav-inner {
+    justify-content: flex-end;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .nav-toggle {
+    display: flex;
+  }
 }
 </style>
