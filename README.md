@@ -1,115 +1,83 @@
-# ModelForge - AI/ML Engineer Portfolio
+# Isuru Mahakumara — Portfolio
 
-A modern, futuristic portfolio website built with Vue 3 and Vite, featuring a resume page with PDF download functionality.
+A minimalist, modern portfolio website built with Vue 3 and Vite. Clean design focused on content and readability.
+
+## Features
+
+- **Minimalist Design** — Clean, content-focused UI with intentional whitespace
+- **Vue 3** with Composition API and `<script setup>` syntax
+- **Vite 6** for lightning-fast development and optimized builds
+- **Vue Router 4** — Client-side routing with history mode
+- **Resume Page** — Dynamic resume with PDF export via pdfmake
+- **Projects Showcase** — Markdown-based project pages with metadata
+- **Responsive** — Mobile-first, works on all screen sizes
+- **SEO Ready** — Head management with @unhead/vue
 
 ## Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js v18+
 - npm or yarn
 
-## Installation
+## Quick Start
 
 ```bash
 # Install dependencies
 npm install
-```
 
-## Development
-
-```bash
-# Start development server with hot-reload
+# Start dev server
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`
+Open `http://localhost:5173`
 
-## Build for Production
+## Build
 
 ```bash
-# Build for production
+# Production build
 npm run build
 
-# Preview production build locally
+# Preview build locally
 npm run preview
 ```
 
-The production-ready files will be generated in the `dist/` folder.
+Output goes to `dist/`
 
-## GitHub Pages Deployment
+## Project Structure
 
-### Option 1: Manual Deployment
-
-1. **Update `vite.config.js`** with the correct base path for your GitHub repo:
-   ```javascript
-   export default defineConfig({
-     base: '/your-repo-name/',  // Replace with your GitHub repo name
-     // ...
-   })
-   ```
-
-2. **Build the project:**
-   ```bash
-   npm run build
-   ```
-
-3. **Deploy to GitHub Pages:**
-   ```bash
-   # Navigate to dist folder
-   cd dist
-   
-   # Initialize git and push to gh-pages branch
-   git init
-   git add -A
-   git commit -m 'deploy'
-   
-   # Push to gh-pages branch (replace with your repo URL)
-   git push -f git@github.com:your-username/your-repo-name.git main:gh-pages
-   ```
-
-4. **Enable GitHub Pages** in your repository settings:
-   - Go to Settings → Pages
-   - Set Source to `gh-pages` branch
-   - Save
-
-### Option 2: Automated Deployment Script
-
-Create a `deploy.sh` file in the project root:
-
-```bash
-#!/usr/bin/env sh
-
-# abort on errors
-set -e
-
-# build
-npm run build
-
-# navigate into the build output directory
-cd dist
-
-# if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
-
-git init
-git add -A
-git commit -m 'deploy'
-
-# if you are deploying to https://<USERNAME>.github.io
-# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
-
-# if you are deploying to https://<USERNAME>.github.io/<REPO>
-# git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
-
-cd -
+```
+├── index.html                 # Entry point
+├── vite.config.js             # Vite configuration
+├── package.json
+├── public/
+│   ├── index.html             # Fallback for SPA routing
+│   ├── resume.html            # Resume content
+│   └── projects/
+│       ├── projects.json      # Project metadata
+│       └── projects-markdown/ # Project details (Markdown)
+├── src/
+│   ├── App.vue                # Root component
+│   ├── main.js                # App entry
+│   ├── router.js              # Route definitions
+│   ├── style.css              # Global styles
+│   ├── components/
+│   │   ├── navigation.vue     # Nav bar
+│   │   └── footer.vue         # Footer
+│   └── views/
+│       ├── home.vue           # Landing page
+│       ├── about.vue          # About page
+│       ├── resume.vue         # Resume with PDF download
+│       ├── projects.vue       # Projects listing
+│       ├── project-detail.vue # Individual project view
+│       ├── experience.vue     # Work experience
+│       ├── contact.vue        # Contact page
+│       └── not-found.vue      # 404 page
+└── locales/
+    └── en.json                # i18n strings
 ```
 
-Make it executable and run:
-```bash
-chmod +x deploy.sh
-./deploy.sh
-```
+## Deployment (GitHub Pages)
 
-### Option 3: GitHub Actions (Recommended)
+### GitHub Actions (Recommended)
 
 Create `.github/workflows/deploy.yml`:
 
@@ -118,101 +86,58 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
+      - run: npm run build
 
-      - name: Build
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
 ```
 
-After pushing this workflow:
-1. Go to Settings → Pages
-2. Set Source to `gh-pages` branch
-3. Your site will auto-deploy on every push to `main`
+Then in repo Settings → Pages, set source to `gh-pages` branch.
 
-## Project Structure
+### Manual Deploy
 
+```bash
+npm run build
+cd dist
+git init
+git add -A
+git commit -m "deploy"
+git push -f git@github.com:IsuruMahakumara/isurumahakumara.github.io.git main:gh-pages
 ```
-├── index.html              # Main HTML entry point (Vite)
-├── vite.config.js          # Vite configuration
-├── public/
-│   └── resume.html         # Resume content (loaded dynamically)
-├── src/
-│   ├── assets/
-│   │   └── resume-print.css  # Print styles for PDF export
-│   ├── components/
-│   │   ├── navigation.vue  # Navigation component
-│   │   └── footer.vue      # Footer component
-│   ├── views/
-│   │   ├── home.vue        # Home page
-│   │   ├── resume.vue      # Resume page with PDF download
-│   │   └── not-found.vue   # 404 page
-│   ├── App.vue             # Root component
-│   ├── main.js             # Entry point
-│   ├── router.js           # Vue Router configuration
-│   └── style.css           # Global styles
-├── package.json
-└── README.md
-```
-
-## Features
-
-- **Vue 3** with Composition API and `<script setup>` syntax
-- **Vite** for fast development and optimized builds
-- **Modern Portfolio Design**: Futuristic UI with smooth animations
-- **Resume Page**: Dynamic resume loading with PDF download
-- **PDF Export**: Browser print functionality for saving resume as PDF
-- **Responsive Design**: Mobile-first approach with adaptive layouts
-- **Vue Router 4**: Client-side routing with history mode
-- **@unhead/vue**: Modern head management for SEO
-
-## Resume PDF Download
-
-The resume page (`/resume`) includes a "Download PDF" button that uses the browser's native print dialog. To save as PDF:
-
-1. Click "Download PDF"
-2. In the print dialog, select "Save as PDF" as the destination
-3. Click Save
 
 ## Customization
 
-### Update Resume Content
-Edit `public/resume.html` with your information.
-
-### Change Styles
-Modify CSS variables in `src/style.css` to customize colors, fonts, and spacing.
-
-### Update Navigation
-Edit `src/components/navigation.vue` to modify navigation links.
+| What | Where |
+|------|-------|
+| Resume content | `public/resume.html` |
+| Global styles | `src/style.css` |
+| Navigation links | `src/components/navigation.vue` |
+| Projects | `public/projects/` |
 
 ## Tech Stack
 
-- **Vue 3.5** - Progressive JavaScript framework
-- **Vite 6** - Next generation frontend tooling
-- **Vue Router 4** - Official router for Vue.js
-- **@unhead/vue** - Document head management
+- Vue 3.5
+- Vite 6
+- Vue Router 4
+- pdfmake (PDF generation)
+- marked (Markdown parsing)
+- @unhead/vue (SEO)
 
 ## License
 
