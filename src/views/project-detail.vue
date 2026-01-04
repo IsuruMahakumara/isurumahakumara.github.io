@@ -1,62 +1,42 @@
 <template>
-  <div class="project-detail-container">
+  <div class="page">
     <app-navigation></app-navigation>
 
-    <article class="project-article" v-if="project">
-      <header class="project-header">
+    <main>
+      <article v-if="project" class="section">
         <div class="container">
           <router-link to="/projects" class="back-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            Back to Projects
+            ← Back to Projects
           </router-link>
           
-          <div class="project-meta">
-            <time class="project-date">{{ formatDate(project.date) }}</time>
-            <span v-if="project.featured" class="project-featured">Featured</span>
-          </div>
-          
-          <h1 class="project-title">{{ project.title }}</h1>
-          <p class="project-summary">{{ project.summary }}</p>
-          
-          <div class="project-tags">
-            <span 
-              v-for="tag in project.tags" 
-              :key="tag" 
-              class="project-tag"
-            >
-              {{ tag }}
-            </span>
-          </div>
+          <header class="article-header">
+            <div class="article-meta">
+              <time class="article-date">{{ formatDate(project.date) }}</time>
+            </div>
+            <h1 class="article-title">{{ project.title }}</h1>
+            <p class="article-summary">{{ project.summary }}</p>
+            <div class="article-tags">
+              <span v-for="tag in project.tags" :key="tag" class="article-tag">{{ tag }}</span>
+            </div>
+          </header>
+
+          <div class="article-content" v-html="renderedContent"></div>
         </div>
-      </header>
+      </article>
 
-      <section class="project-content">
-        <div class="container container-narrow">
-          <div class="markdown-content" v-html="renderedContent"></div>
+      <div v-else-if="loading" class="loading-state">
+        <div class="container">
+          <p>Loading...</p>
         </div>
-      </section>
-    </article>
-
-    <div v-else-if="loading" class="project-loading">
-      <div class="container">
-        <p class="section-content">Loading project...</p>
       </div>
-    </div>
 
-    <div v-else class="project-not-found">
-      <div class="container">
-        <h1 class="section-title">Project Not Found</h1>
-        <p class="section-content">The project you're looking for doesn't exist.</p>
-        <router-link to="/projects" class="back-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          Back to Projects
-        </router-link>
+      <div v-else class="error-state">
+        <div class="container">
+          <h1 class="error-title">Project Not Found</h1>
+          <router-link to="/projects" class="back-link">← Back to Projects</router-link>
+        </div>
       </div>
-    </div>
+    </main>
 
     <app-footer></app-footer>
   </div>
@@ -81,9 +61,9 @@ const renderedContent = computed(() => {
 })
 
 useHead({
-  title: computed(() => project.value ? `${project.value.title} | Portfolio` : 'Project | Portfolio'),
+  title: computed(() => project.value ? `${project.value.title} — Isuru Mahakumara` : 'Project'),
   meta: [
-    { property: 'og:title', content: computed(() => project.value ? `${project.value.title} | Portfolio` : 'Project | Portfolio') },
+    { property: 'og:title', content: computed(() => project.value?.title || 'Project') },
     { property: 'og:description', content: computed(() => project.value?.summary || '') },
   ],
 })
@@ -108,7 +88,6 @@ function parseFrontmatter(text) {
   const frontmatterStr = match[1]
   const contentStr = match[2]
   
-  // Simple YAML parsing for our use case
   const frontmatter = {}
   frontmatterStr.split('\n').forEach(line => {
     const colonIndex = line.indexOf(':')
@@ -116,12 +95,10 @@ function parseFrontmatter(text) {
       const key = line.slice(0, colonIndex).trim()
       let value = line.slice(colonIndex + 1).trim()
       
-      // Handle quoted strings
       if ((value.startsWith('"') && value.endsWith('"')) || 
           (value.startsWith("'") && value.endsWith("'"))) {
         value = value.slice(1, -1)
       }
-      // Handle arrays
       else if (value.startsWith('[') && value.endsWith(']')) {
         try {
           value = JSON.parse(value)
@@ -129,7 +106,6 @@ function parseFrontmatter(text) {
           // Keep as string if parsing fails
         }
       }
-      // Handle booleans
       else if (value === 'true') value = true
       else if (value === 'false') value = false
       
@@ -183,266 +159,210 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.project-detail-container {
-  width: 100%;
-  display: block;
+.page {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.project-article {
-  min-height: calc(100vh - 4.5rem);
+main {
+  flex: 1;
 }
 
-.project-header {
-  padding: var(--spacing-4xl) 0;
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+.container {
+  max-width: 42rem;
 }
 
 .back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  color: var(--color-primary);
+  display: inline-block;
+  color: var(--color-text-muted);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  text-decoration: none;
   margin-bottom: var(--spacing-2xl);
-  transition: opacity 0.2s ease;
+  transition: color 0.15s ease;
 }
 
 .back-link:hover {
-  opacity: 0.8;
+  color: var(--color-text);
 }
 
-.project-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
+.article-header {
+  margin-bottom: var(--spacing-3xl);
+  padding-bottom: var(--spacing-2xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-meta {
   margin-bottom: var(--spacing-md);
 }
 
-.project-date {
-  color: var(--color-on-surface-secondary);
+.article-date {
+  color: var(--color-text-muted);
   font-size: var(--font-size-sm);
-  font-family: var(--font-family-body);
 }
 
-.project-featured {
-  color: var(--color-accent);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  background: color-mix(in srgb, var(--color-accent) 15%, transparent);
-  border-radius: var(--border-radius-sm);
-}
-
-.project-title {
+.article-title {
   font-size: var(--font-size-3xl);
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-heading);
-  color: var(--color-on-surface);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
   margin-bottom: var(--spacing-md);
-  line-height: var(--line-height-heading);
 }
 
-.project-summary {
-  color: var(--color-on-surface-secondary);
+.article-summary {
+  color: var(--color-text-secondary);
   font-size: var(--font-size-lg);
-  font-family: var(--font-family-body);
-  line-height: var(--line-height-body);
-  margin-bottom: var(--spacing-xl);
-  max-width: 700px;
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-lg);
 }
 
-.project-tags {
+.article-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
 }
 
-.project-tag {
-  color: var(--color-primary);
+.article-tag {
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  padding: var(--spacing-xs) var(--spacing-md);
-  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
-  border-radius: var(--border-radius-full);
+  color: var(--color-text-muted);
 }
 
-.project-content {
-  padding: var(--spacing-4xl) 0;
-  background: var(--color-surface);
+.article-tag::before {
+  content: "#";
 }
 
-.container-narrow {
-  max-width: 800px;
-}
-
-/* Markdown content styling */
-.markdown-content {
-  color: var(--color-on-surface);
-  font-family: var(--font-family-body);
+/* Article content */
+.article-content {
   font-size: var(--font-size-base);
-  line-height: 1.8;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
 }
 
-.markdown-content :deep(h1),
-.markdown-content :deep(h2),
-.markdown-content :deep(h3),
-.markdown-content :deep(h4),
-.markdown-content :deep(h5),
-.markdown-content :deep(h6) {
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-heading);
-  color: var(--color-on-surface);
-  line-height: var(--line-height-heading);
+.article-content :deep(h1),
+.article-content :deep(h2),
+.article-content :deep(h3),
+.article-content :deep(h4) {
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
   margin-top: var(--spacing-3xl);
   margin-bottom: var(--spacing-lg);
 }
 
-.markdown-content :deep(h1) {
-  font-size: var(--font-size-2xl);
-}
+.article-content :deep(h1) { font-size: var(--font-size-2xl); }
+.article-content :deep(h2) { font-size: var(--font-size-xl); }
+.article-content :deep(h3) { font-size: var(--font-size-lg); }
 
-.markdown-content :deep(h2) {
-  font-size: var(--font-size-xl);
-}
-
-.markdown-content :deep(h3) {
-  font-size: var(--font-size-lg);
-}
-
-.markdown-content :deep(p) {
+.article-content :deep(p) {
   margin-bottom: var(--spacing-lg);
 }
 
-.markdown-content :deep(ul),
-.markdown-content :deep(ol) {
+.article-content :deep(ul),
+.article-content :deep(ol) {
   margin-bottom: var(--spacing-lg);
-  padding-left: var(--spacing-xl);
+  padding-left: var(--spacing-lg);
 }
 
-.markdown-content :deep(li) {
+.article-content :deep(li) {
   margin-bottom: var(--spacing-sm);
 }
 
-.markdown-content :deep(a) {
-  color: var(--color-primary);
+.article-content :deep(a) {
+  color: var(--color-text);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.markdown-content :deep(a:hover) {
-  opacity: 0.8;
+.article-content :deep(a:hover) {
+  color: var(--color-text-secondary);
 }
 
-.markdown-content :deep(strong) {
-  font-weight: var(--font-weight-semibold);
+.article-content :deep(strong) {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
 }
 
-.markdown-content :deep(code) {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+.article-content :deep(code) {
+  font-family: var(--font-mono);
   font-size: 0.9em;
-  background: var(--color-surface-elevated);
-  padding: 0.2em 0.4em;
-  border-radius: var(--border-radius-sm);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
+  padding: 0.15em 0.4em;
+  border-radius: var(--border-radius);
 }
 
-.markdown-content :deep(pre) {
-  background: var(--color-surface-elevated);
-  padding: var(--spacing-xl);
-  border-radius: var(--border-radius-md);
+.article-content :deep(pre) {
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
   overflow-x: auto;
   margin-bottom: var(--spacing-lg);
 }
 
-.markdown-content :deep(pre code) {
+.article-content :deep(pre code) {
   background: none;
   padding: 0;
   border: none;
   font-size: var(--font-size-sm);
 }
 
-.markdown-content :deep(blockquote) {
-  border-left: 3px solid var(--color-primary);
-  padding-left: var(--spacing-xl);
+.article-content :deep(blockquote) {
+  border-left: 2px solid var(--color-border);
+  padding-left: var(--spacing-lg);
   margin: var(--spacing-xl) 0;
-  color: var(--color-on-surface-secondary);
   font-style: italic;
 }
 
-.markdown-content :deep(hr) {
+.article-content :deep(hr) {
   border: none;
   border-top: 1px solid var(--color-border);
-  margin: var(--spacing-3xl) 0;
+  margin: var(--spacing-2xl) 0;
 }
 
-.markdown-content :deep(img) {
+.article-content :deep(img) {
   max-width: 100%;
   height: auto;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius);
   margin: var(--spacing-xl) 0;
 }
 
-.markdown-content :deep(table) {
+.article-content :deep(table) {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-sm);
 }
 
-.markdown-content :deep(th),
-.markdown-content :deep(td) {
-  padding: var(--spacing-md);
+.article-content :deep(th),
+.article-content :deep(td) {
+  padding: var(--spacing-sm) var(--spacing-md);
   border: 1px solid var(--color-border);
   text-align: left;
 }
 
-.markdown-content :deep(th) {
-  background: var(--color-surface-elevated);
-  font-weight: var(--font-weight-semibold);
+.article-content :deep(th) {
+  background: var(--color-surface);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
 }
 
-.project-loading,
-.project-not-found {
-  min-height: calc(100vh - 4.5rem);
+.loading-state,
+.error-state {
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-4xl) 0;
-  background: var(--color-surface);
-}
-
-.project-not-found .container {
   text-align: center;
 }
 
-.project-not-found .back-link {
-  margin-top: var(--spacing-2xl);
-  justify-content: center;
+.error-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-lg);
 }
 
-@media (max-width: 767px) {
-  .project-header {
-    padding: var(--spacing-3xl) 0;
-  }
-
-  .project-title {
+@media (max-width: 640px) {
+  .article-title {
     font-size: var(--font-size-2xl);
-  }
-
-  .project-summary {
-    font-size: var(--font-size-base);
-  }
-
-  .project-content {
-    padding: var(--spacing-3xl) 0;
   }
 }
 </style>
-

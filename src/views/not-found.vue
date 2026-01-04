@@ -1,61 +1,63 @@
 <template>
-  <div class="not-found-container1">
-    <h3>OOPS! PAGE NOT FOUND</h3>
-    <div class="not-found-container2"><h1 class="not-found-text2">404</h1></div>
-    <div class="not-found-container3">
-      <h2 class="not-found-text3">
-        WE ARE SORRY, BUT THE PAGE YOU REQUESTED WAS NOT FOUND
-      </h2>
-    </div>
+  <div class="page">
+    <app-navigation></app-navigation>
+    
+    <main class="not-found">
+      <div class="container">
+        <span class="error-code">404</span>
+        <h1 class="error-title">Page not found</h1>
+        <p class="error-message">The page you're looking for doesn't exist.</p>
+        <router-link to="/" class="btn btn-outline">Go Home</router-link>
+      </div>
+    </main>
+
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script setup>
 import { useHead } from '@unhead/vue'
+import AppNavigation from '../components/navigation.vue'
+import AppFooter from '../components/footer.vue'
 
 useHead({
-  title: '404 - Not Found',
+  title: '404 — Page Not Found',
 })
 </script>
 
 <style scoped>
-.not-found-container1 {
-  width: 100%;
-  display: flex;
-  overflow: auto;
+.page {
   min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.not-found-container2 {
   display: flex;
-  position: relative;
-  align-items: center;
   flex-direction: column;
-  justify-content: center;
 }
 
-.not-found-text2 {
-  color: rgb(38, 38, 38);
-  font-size: 252px;
-  margin-top: -20px;
-  font-weight: 900;
-  margin-bottom: -20px;
-  letter-spacing: -20px;
-}
-
-.not-found-container3 {
-  width: 421px;
+.not-found {
+  flex: 1;
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
-}
-
-.not-found-text3 {
   text-align: center;
-  font-weight: 400;
+  padding: var(--spacing-4xl) var(--spacing-xl);
+}
+
+.error-code {
+  display: block;
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--spacing-md);
+}
+
+.error-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-sm);
+}
+
+.error-message {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xl);
 }
 </style>

@@ -1,47 +1,38 @@
 <template>
-  <div class="projects-container">
+  <div class="page">
     <app-navigation></app-navigation>
 
-    <section class="projects-section">
-      <div class="container">
-        <div class="projects-header">
-          <h1 class="section-title">Projects</h1>
-          <p class="section-content projects-intro">
-            A collection of data science and machine learning case studies.
-          </p>
-        </div>
+    <main>
+      <section class="section">
+        <div class="container">
+          <header class="page-header">
+            <h1 class="page-title">Projects</h1>
+            <p class="page-intro">
+              Data science and machine learning case studies.
+            </p>
+          </header>
 
-        <div class="projects-list" v-if="projects.length">
-          <article 
-            v-for="project in projects" 
-            :key="project.slug" 
-            class="project-card"
-          >
-            <div class="project-meta">
-              <time class="project-date">{{ formatDate(project.date) }}</time>
-              <span v-if="project.featured" class="project-featured">Featured</span>
-            </div>
-            <router-link :to="`/projects/${project.slug}`" class="project-title-link">
-              <h2 class="project-title">{{ project.title }}</h2>
-            </router-link>
-            <p class="project-summary">{{ project.summary }}</p>
-            <div class="project-tags">
-              <span 
-                v-for="tag in project.tags" 
-                :key="tag" 
-                class="project-tag"
-              >
-                {{ tag }}
-              </span>
-            </div>
-          </article>
-        </div>
+          <div class="projects-grid" v-if="projects.length">
+            <article v-for="project in projects" :key="project.slug" class="project-card">
+              <div class="project-header">
+                <router-link :to="`/projects/${project.slug}`" class="project-title">
+                  {{ project.title }}
+                </router-link>
+                <span class="project-date">{{ formatDate(project.date) }}</span>
+              </div>
+              <p class="project-summary">{{ project.summary }}</p>
+              <div class="project-tags">
+                <span v-for="tag in project.tags" :key="tag" class="project-tag">{{ tag }}</span>
+              </div>
+            </article>
+          </div>
 
-        <div v-else class="projects-loading">
-          <p class="section-content">Loading projects...</p>
+          <div v-else class="loading">
+            <p>Loading...</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <app-footer></app-footer>
   </div>
@@ -54,9 +45,9 @@ import AppNavigation from '../components/navigation.vue'
 import AppFooter from '../components/footer.vue'
 
 useHead({
-  title: 'Projects | Portfolio',
+  title: 'Projects — Isuru Mahakumara',
   meta: [
-    { property: 'og:title', content: 'Projects | Portfolio' },
+    { property: 'og:title', content: 'Projects — Isuru Mahakumara' },
   ],
 })
 
@@ -66,8 +57,7 @@ function formatDate(dateString) {
   const date = new Date(dateString)
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'short',
-    day: 'numeric'
+    month: 'short'
   })
 }
 
@@ -86,131 +76,35 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.projects-container {
-  width: 100%;
-  display: block;
+.page {
   min-height: 100vh;
-}
-
-.projects-section {
-  padding: var(--spacing-4xl) 0;
-  min-height: calc(100vh - 4.5rem);
-  background: var(--color-surface);
-}
-
-.projects-header {
-  margin-bottom: var(--spacing-4xl);
-}
-
-.projects-intro {
-  max-width: 600px;
-  margin-top: var(--spacing-md);
-  color: var(--color-on-surface-secondary);
-}
-
-.projects-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
 }
 
-.project-card {
-  padding: var(--spacing-2xl);
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  transition: border-color 0.2s ease;
+main {
+  flex: 1;
 }
 
-.project-card:hover {
-  border-color: var(--color-primary);
+.page-header {
+  margin-bottom: var(--spacing-3xl);
 }
 
-.project-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
+.page-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
   margin-bottom: var(--spacing-md);
 }
 
-.project-date {
-  color: var(--color-on-surface-secondary);
-  font-size: var(--font-size-sm);
-  font-family: var(--font-family-body);
+.page-intro {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
 }
 
-.project-featured {
-  color: var(--color-accent);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  background: color-mix(in srgb, var(--color-accent) 15%, transparent);
-  border-radius: var(--border-radius-sm);
-}
-
-.project-title-link {
-  text-decoration: none;
-  display: block;
-}
-
-.project-title-link:hover .project-title {
-  color: var(--color-primary);
-}
-
-.project-title {
-  font-size: var(--font-size-xl);
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-heading);
-  color: var(--color-on-surface);
-  margin-bottom: var(--spacing-sm);
-  line-height: var(--line-height-heading);
-  transition: color 0.2s ease;
-}
-
-.project-summary {
-  color: var(--color-on-surface-secondary);
-  font-size: var(--font-size-base);
-  font-family: var(--font-family-body);
-  line-height: var(--line-height-body);
-  margin-bottom: var(--spacing-lg);
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
-}
-
-.project-tag {
-  color: var(--color-primary);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  padding: var(--spacing-xs) var(--spacing-md);
-  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
-  border-radius: var(--border-radius-full);
-}
-
-.projects-loading {
+.loading {
+  color: var(--color-text-muted);
   text-align: center;
   padding: var(--spacing-4xl) 0;
-  color: var(--color-on-surface-secondary);
-}
-
-@media (max-width: 767px) {
-  .projects-section {
-    padding: var(--spacing-3xl) 0;
-  }
-
-  .project-card {
-    padding: var(--spacing-xl);
-  }
-
-  .project-title {
-    font-size: var(--font-size-lg);
-  }
 }
 </style>
-
