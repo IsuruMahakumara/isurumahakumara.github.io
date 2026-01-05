@@ -81,7 +81,7 @@
               </div>
               <p class="project-summary">{{ project.summary }}</p>
               <div class="project-tags">
-                <span v-for="tag in project.tags.slice(0, 3)" :key="tag" class="project-tag">{{ tag }}</span>
+                <span v-for="tag in project.tags.slice(0, 5)" :key="tag" class="project-tag">{{ tag }}</span>
               </div>
             </article>
           </div>
