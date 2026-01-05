@@ -2,11 +2,13 @@
   {
     "slug": "early-churn-prediction",
     "title": "Early-Stage Customer Churn Prediction",
-    "summary": "Predicting early churn for subscription e-commerce using ML.",
+    "summary": "Predicting early churn for subscription e-commerce using Supervised Learning.",
     "tags": [
-      "ML",
-      "Python",
-      "E-commerce"
+      "Supervised Learning",
+      "Case Study",
+      "E-commerce",
+      "Shopify",
+      "Klaviyo"
     ],
     "featured": true,
     "date": "2026-01-03"
@@ -16,8 +18,9 @@
     "title": "Customer Segmentaion for lifecycle operations ",
     "summary": "Using unsupervised learning to optimize email marketing in subscription e-commerce.",
     "tags": [
-      "ML",
-      "Python",
+      "Unsupervised Learning",
+      "Clustering",
+      "Klaviyo",
       "E-commerce"
     ],
     "featured": true,

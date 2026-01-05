@@ -2,7 +2,7 @@
 slug: "customer-segmentation"
 title: "Customer Segmentaion for lifecycle operations "
 summary: "Using unsupervised learning to optimize email marketing in subscription e-commerce."
-tags: ["ML", "Python", "E-commerce"]
+tags: ["Unsupervised Learning", "Clustering", "Klaviyo", "E-commerce"]
 featured: true
 date: "2025-11-20"
 ---
@@ -127,9 +127,3 @@ Techniques for choosing `k` include:
 5. **Label assignment**: assign cluster labels to each customer profile
 6. **Integration with Klaviyo**: push cluster labels as **custom properties** to enable dynamic email segmentation
 
-Example property in Klaviyo:
-
-```json
-{
-  "customer_segment": "cluster_3"
-}
