@@ -31,6 +31,7 @@
         <p class="footer-copyright">
           © {{ currentYear }} Isuru Mahakumara
         </p>
+        <p class="footer-version">v{{ version }}</p>
       </div>
     </div>
   </footer>
@@ -39,5 +40,6 @@
 <script setup>
 import { computed } from 'vue'
 
+const version = '1.0.0'
 const currentYear = computed(() => new Date().getFullYear())
 </script>

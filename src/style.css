@@ -400,6 +400,13 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-muted);
 }
 
+.footer-version {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 479px) {
   .footer-content {
     flex-direction: column;
