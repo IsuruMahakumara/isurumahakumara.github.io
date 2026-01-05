@@ -6,12 +6,10 @@ A minimalist, modern portfolio website built with Vue 3 and Vite. Clean design f
 
 - **Minimalist Design** — Clean, content-focused UI with intentional whitespace
 - **Vue 3** with Composition API and `<script setup>` syntax
-- **Vite 6** for lightning-fast development and optimized builds
-- **Vue Router 4** — Client-side routing with history mode
-- **Resume Page** — Dynamic resume with PDF export via pdfmake
-- **Projects Showcase** — Markdown-based project pages with metadata
+- **Vite** for fast development and optimized builds
+- **Resume Page** — Dynamic resume with PDF export
+- **Projects Showcase** — Markdown-based project pages
 - **Responsive** — Mobile-first, works on all screen sizes
-- **SEO Ready** — Head management with @unhead/vue
 
 ## Prerequisites
 
@@ -75,51 +73,14 @@ Output goes to `dist/`
     └── en.json                # i18n strings
 ```
 
-## Deployment (GitHub Pages)
-
-### GitHub Actions (Recommended)
-
-Create `.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - run: npm ci
-      - run: npm run build
-
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-```
-
-Then in repo Settings → Pages, set source to `gh-pages` branch.
-
-### Manual Deploy
+## Deploy
 
 ```bash
 npm run build
-cd dist
-git init
-git add -A
-git commit -m "deploy"
-git push -f git@github.com:IsuruMahakumara/isurumahakumara.github.io.git main:gh-pages
+npm run deploy
 ```
+
+Deploys to GitHub Pages via `gh-pages` branch. Live at [isurumahakumara.github.io](https://isurumahakumara.github.io)
 
 ## Customization
 
@@ -132,12 +93,10 @@ git push -f git@github.com:IsuruMahakumara/isurumahakumara.github.io.git main:gh
 
 ## Tech Stack
 
-- Vue 3.5
-- Vite 6
-- Vue Router 4
-- pdfmake (PDF generation)
+- Vue 3
+- Vite 5
 - marked (Markdown parsing)
-- @unhead/vue (SEO)
+- gh-pages (deployment)
 
 ## License
 
