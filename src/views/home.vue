@@ -29,21 +29,40 @@
         <div class="container">
           <h2 class="section-title">Expertise</h2>
           <div class="skills-list">
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">AI</span>
             <span class="skill-tag">Recommendation Systems</span>
             <span class="skill-tag">Predictive Analytics</span>
             <span class="skill-tag">Data Visualization</span>
+            <span class="skill-tag">A/B Testing</span>
             <span class="skill-tag">MLOps</span>
             <span class="skill-tag">ETL</span>
             <span class="skill-tag">Alibaba Cloud</span>
             <span class="skill-tag">Python</span>
             <span class="skill-tag">SQL</span>
-            <span class="skill-tag">TensorFlow</span>
-            <span class="skill-tag">PyTorch</span>
             <span class="skill-tag">Pandas</span>
             <span class="skill-tag">NumPy</span>
             <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Hugging Face</span>
             <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Snowflake</span>
+            <span class="skill-tag">PySpark</span>
+            <span class="skill-tag">SnowPark</span>
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">Looker</span>
+            <span class="skill-tag">LookML</span>
+            <span class="skill-tag">Looker Studio</span>
+            <span class="skill-tag">JAVA</span>
+            <span class="skill-tag">Vue.js</span>
+            <span class="skill-tag">Node.js</span>
 
+   
           </div>
         </div>
       </section>
@@ -81,9 +100,9 @@ import AppNavigation from '../components/navigation.vue'
 import AppFooter from '../components/footer.vue'
 
 useHead({
-  title: 'Isuru Mahakumara — Data Scientist & ML Engineer',
+  title: 'Isuru Mahakumara — Data Scientist & AI Engineer',
   meta: [
-    { property: 'og:title', content: 'Isuru Mahakumara — Data Scientist & ML Engineer' },
+    { property: 'og:title', content: 'Isuru Mahakumara — Data Scientist & AI Engineer' },
   ],
 })
 
