@@ -169,10 +169,6 @@ main {
   flex: 1;
 }
 
-.container {
-  max-width: 42rem;
-}
-
 .back-link {
   display: inline-block;
   color: var(--color-text-muted);
