@@ -36,6 +36,14 @@
                 <span>dbt</span>
                 <span>Sagemaker</span>
                 <span>PySpark</span>
+                <span>SnowPark</span>
+                <span>Machine Learning</span>
+                <span>A/B Testing</span>
+                <span>Tableau</span>
+                <span>LookML</span>  
+                <span>GitHub</span>
+                <span>AWS Sagemaker</span>
+          
               </div>
             </article>
 
@@ -83,7 +91,9 @@
                 <span>Alibaba Cloud</span>
                 <span>Python</span>
                 <span>Java</span>
+                <span>Deep Learning</span>
                 <span>DeepFM</span>
+
               </div>
             </article>
 
@@ -135,19 +145,27 @@
             <div class="skills-grid">
               <div class="skill-group">
                 <h3 class="skill-group-title">Languages</h3>
-                <p class="skill-group-list">Python, SQL, Java</p>
+                <p class="skill-group-list">Python, SQL, Java, JavaScript</p>
               </div>
               <div class="skill-group">
                 <h3 class="skill-group-title">Data Science</h3>
-                <p class="skill-group-list">ML, Deep Learning, Recommendation Systems</p>
+                <p class="skill-group-list">Recommendation Systems, Predictive Analytics, Forecasting, A/B Testing</p>
               </div>
               <div class="skill-group">
                 <h3 class="skill-group-title">Data Engineering</h3>
-                <p class="skill-group-list">Snowflake, dbt, PySpark, ETL</p>
+                <p class="skill-group-list">Snowflake, dbt, SnowPark, PySpark, ETL</p>
               </div>
               <div class="skill-group">
                 <h3 class="skill-group-title">Cloud & MLOps</h3>
                 <p class="skill-group-list">AWS Sagemaker, Alibaba Cloud</p>
+              </div>
+              <div class="skill-group">
+                <h3 class="skill-group-title">Data Visualization</h3>
+                <p class="skill-group-list">Tableau, Looker, Looker Studio, LookML</p>
+              </div>
+              <div class="skill-group">
+                <h3 class="skill-group-title">Web Development</h3>
+                <p class="skill-group-list">Vue.js, Flask, FastAPI, REST APIs</p>
               </div>
             </div>
           </div>
