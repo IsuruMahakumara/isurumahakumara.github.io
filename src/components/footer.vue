@@ -40,6 +40,6 @@
 <script setup>
 import { computed } from 'vue'
 
-const version = '1.0.5'
+const version = '1.0.6'
 const currentYear = computed(() => new Date().getFullYear())
 </script>
