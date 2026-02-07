@@ -4,7 +4,6 @@
       <ul class="nav-links">
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/projects">Projects</router-link></li>
-        <li><router-link to="/experience">Experience</router-link></li>
         <li><router-link to="/resume">Resume</router-link></li>
         <li><router-link to="/contact">Contact</router-link></li>
       </ul>
@@ -30,7 +29,6 @@
       <div v-if="isOpen" class="nav-mobile">
         <router-link to="/" @click="closeMenu">Home</router-link>
         <router-link to="/projects" @click="closeMenu">Projects</router-link>
-        <router-link to="/experience" @click="closeMenu">Experience</router-link>
         <router-link to="/resume" @click="closeMenu">Resume</router-link>
         <router-link to="/contact" @click="closeMenu">Contact</router-link>
       </div>
