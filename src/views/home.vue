@@ -29,40 +29,7 @@
         <div class="container">
           <h2 class="section-title">Expertise</h2>
           <div class="skills-list">
-            <span class="skill-tag">Machine Learning</span>
-            <span class="skill-tag">Deep Learning</span>
-            <span class="skill-tag">AI</span>
-            <span class="skill-tag">Recommendation Systems</span>
-            <span class="skill-tag">Predictive Analytics</span>
-            <span class="skill-tag">Data Visualization</span>
-            <span class="skill-tag">A/B Testing</span>
-            <span class="skill-tag">MLOps</span>
-            <span class="skill-tag">ETL</span>
-            <span class="skill-tag">Alibaba Cloud</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Pandas</span>
-            <span class="skill-tag">NumPy</span>
-            <span class="skill-tag">Scikit-learn</span>
-            <span class="skill-tag">TensorFlow</span>
-            <span class="skill-tag">PyTorch</span>
-            <span class="skill-tag">Hugging Face</span>
-            <span class="skill-tag">Matplotlib</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">Snowflake</span>
-            <span class="skill-tag">PySpark</span>
-            <span class="skill-tag">SnowPark</span>
-            <span class="skill-tag">Flask</span>
-            <span class="skill-tag">FastAPI</span>
-            <span class="skill-tag">Tableau</span>
-            <span class="skill-tag">Looker</span>
-            <span class="skill-tag">LookML</span>
-            <span class="skill-tag">Looker Studio</span>
-            <span class="skill-tag">JAVA</span>
-            <span class="skill-tag">Vue.js</span>
-            <span class="skill-tag">Node.js</span>
-
-   
+            <span v-for="skill in skills" :key="skill" class="skill-tag">{{ skill }}</span>
           </div>
         </div>
       </section>
@@ -107,6 +74,7 @@ useHead({
 })
 
 const projects = ref([])
+const skills = ref([])
 
 const displayedProjects = computed(() => {
   return projects.value.slice(0, 3)
@@ -130,8 +98,36 @@ async function fetchProjects() {
   }
 }
 
+async function fetchSkills() {
+  try {
+    const response = await fetch('/resume.html')
+    const html = await response.text()
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(html, 'text/html')
+    
+    // Find the Skills section - look for h2 with "Skills" text
+    const headings = doc.querySelectorAll('h2')
+    for (const heading of headings) {
+      if (heading.textContent.trim() === 'Skills') {
+        const skillsP = heading.nextElementSibling
+        if (skillsP && skillsP.tagName === 'P') {
+          const skillsText = skillsP.textContent
+          skills.value = skillsText
+            .split(',')
+            .map(skill => skill.trim())
+            .filter(skill => skill.length > 0)
+        }
+        break
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching skills:', error)
+  }
+}
+
 onMounted(() => {
   fetchProjects()
+  fetchSkills()
 })
 </script>
 
