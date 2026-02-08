@@ -3,6 +3,7 @@ slug: "early-churn-prediction"
 title: "Early-Stage Customer Churn Prediction"
 summary: "Predicting early churn for subscription e-commerce using Supervised Learning."
 tags: ["Supervised Learning", "Case Study", "E-commerce", "Shopify", "Klaviyo"]
+type: "article"
 featured: true
 date: "2026-01-03"
 ---
