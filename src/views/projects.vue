@@ -27,6 +27,14 @@
               <div class="project-tags">
                 <span v-for="tag in project.tags" :key="tag" class="project-tag">{{ tag }}</span>
               </div>
+              <a v-if="project.type === 'demo'" :href="project.url" target="_blank" rel="noopener noreferrer" class="demo-button">
+                View Demo
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
             </article>
           </div>
 
@@ -109,5 +117,26 @@ main {
   color: var(--color-text-muted);
   text-align: center;
   padding: var(--spacing-4xl) 0;
+}
+
+.demo-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.demo-button:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 </style>
