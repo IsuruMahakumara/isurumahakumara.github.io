@@ -12,9 +12,9 @@ date: "2026-02-09"
 
 ## Data Privacy Law Research Assistant – MVP RAG Application
 
-This project is a **minimum viable application (MVP)** designed to demonstrate how modern LLM technologies can be combined to build a functional research assistants. Functionality and 
+This project is a **minimum viable application (MVP)** designed to demonstrate and study the practicle implications of  LLM & RAG technologies, especially when it comes to deployiment and utility.
 
-The application leverages **Retrieval-Augmented Generation (RAG)**, Hugging Face inference endpoints, and Pinecone vector search to provide accurate, context-aware answers to legal questions.
+The application leverages Free Tier offerings of Hugging Face inference endpoints, and Pinecone vector search to provide accurate, context-aware answers to legal questions.
 
 ---
 
@@ -34,7 +34,7 @@ This approach improves factual accuracy compared to standalone LLM responses.
 
 The application is built as a **monolithic, dockerized system** consisting of a frontend, backend, and AI components.
 
-#### 1) LLM & Embeddings
+#### LLM & Embeddings
 
 - **LLM**: Mistral 7B Instruct v2  
 - **Inference**: Hugging Face Inference Endpoint  
@@ -45,7 +45,7 @@ Since the system relies on **freely available inference resources**, the respons
 
 ---
 
-#### 2) Vector Database
+#### Vector Database
 
 - **Vector Store**: Pinecone  
 
@@ -55,19 +55,20 @@ Pinecone handles the vectorization process. I only had to focus on chunking and 
 ### ⚙️ Key Technologies Used
 
 - Hugging Face Inference Endpoints  
-- Mistral 7B Instruct v2  
-- Llama Text Embeddings v2  
+- Mistral-7B-Instruct-v0.2  
+- llama-text-embed-v2
+- RAG (Retrieval-Augmented Generation) 
 - Pinecone Vector Database  
 - FastAPI  
 - React + TypeScript + Vite  
 - Docker  
-- RAG (Retrieval-Augmented Generation)
+
 
 ---
 
 ### 🎯 Purpose of the Project
 
-This application is not intended to be a production-grade legal system. Instead, it serves as a **demonstrative yet functional prototype** to showcase:
+This application is not intended to be a production-grade legal system. Instead, it serves as a **demonstrative yet functional prototype** to study:
 
 - Practical implementation of RAG pipelines
 - Integration of LLMs with vector databases
@@ -77,23 +78,27 @@ This application is not intended to be a production-grade legal system. Instead,
 
 ---
 
-### 🚀 Future Improvements 
+### 🏋️ Challenges
 
-Potential enhancements include:
+- Primary limitation here is the LLM used, since users interact with widely available 100B+ parameter models regularly, an agent with mistralai/Mistral-7B-Instruct-v0.2 will definetely seem very unfriendly to user.
 
-- Migrating from free inference to dedicated GPU endpoints
-- Improving response latency with caching and batching
-- Splitting the monolith into microservices
-- Adding citation highlighting and source ranking
-- Expanding beyond GDPR to other privacy regulations (e.g., CCPA, HIPAA)
+- LLM inference Latency is another bottleneck, Huggingface inference endpoints are really slow.
 
----
+
+### 🪜  Next Steps
+
+- Attemping to use a better freely available LLM eg: Groq
+- Improve UX of the Agent, make it conversational
+- Implement Evaluation and Tests Suite
+
+### 🚀  Repo for this project is at https://github.com/IsuruMahakumara/ai-research-assistant
+
+
 
 ### 📌 Conclusion
 
-The Data Privacy Law Research Assistant demonstrates how modern AI tooling can be combined into a practical RAG-based legal research system. Despite being built with minimal resources, it effectively illustrates the power and limitations of contemporary LLM-driven applications.
 
-This project highlights the synergy between **LLMs, vector databases, and retrieval pipelines**, offering a solid foundation for more advanced AI-powered legal research tools.
+
 
 
 
