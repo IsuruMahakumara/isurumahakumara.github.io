@@ -41,7 +41,10 @@
           <div class="projects-grid">
             <article v-for="project in displayedProjects" :key="project.slug" class="project-card">
               <div class="project-header">
-                <router-link :to="`/projects/${project.slug}`" class="project-title">
+                <a v-if="project.type === 'nbviewer'" :href="project.url" target="_blank" rel="noopener noreferrer" class="project-title">
+                  {{ project.title }}
+                </a>
+                <router-link v-else :to="`/projects/${project.slug}`" class="project-title">
                   {{ project.title }}
                 </router-link>
                 <span class="project-date">{{ formatDate(project.date) }}</span>
