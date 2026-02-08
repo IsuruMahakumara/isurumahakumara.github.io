@@ -2,7 +2,7 @@
 slug: "research-assistant"
 title: "Data Privacy Law Research Assitant"
 summary: "Functional LLM Agent that can answer question on GDPR and Data Privacy Laws"
-tags: ["Live Demo", "RAG", "Huggingface", "LLM", "Pineconde", "Clound Run", "Docker"]
+tags: ["Live Demo", "RAG", "LangChain", "Huggingface", "LLM", "Pinecone", "Clound Run", "Docker"]
 url : "https://ai-research-assistant-1003963640386.us-east1.run.app"
 type: "demo"
 featured: true
