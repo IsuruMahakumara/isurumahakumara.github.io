@@ -1,5 +1,23 @@
 [
   {
+    "slug": "research-assistant",
+    "title": "Data Privacy Law Research Assitant",
+    "summary": "Functional LLM Agent that can answer question on GDPR and Data Privacy Laws",
+    "tags": [
+      "Live Demo",
+      "RAG",
+      "Huggingface",
+      "LLM",
+      "Pineconde",
+      "Clound Run",
+      "Docker"
+    ],
+    "url": "https://ai-research-assistant-1003963640386.us-east1.run.app",
+    "type": "demo",
+    "featured": true,
+    "date": "2026-02-09"
+  },
+  {
     "slug": "early-churn-prediction",
     "title": "Early-Stage Customer Churn Prediction",
     "summary": "Predicting early churn for subscription e-commerce using Supervised Learning.",
@@ -10,6 +28,7 @@
       "Shopify",
       "Klaviyo"
     ],
+    "type": "article",
     "featured": true,
     "date": "2026-01-03"
   },
@@ -23,6 +42,7 @@
       "Klaviyo",
       "E-commerce"
     ],
+    "type": "article",
     "featured": true,
     "date": "2025-11-20"
   }

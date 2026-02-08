@@ -3,6 +3,7 @@ slug: "customer-segmentation"
 title: "Customer Segmentaion for lifecycle operations "
 summary: "Using unsupervised learning to optimize email marketing in subscription e-commerce."
 tags: ["Unsupervised Learning", "Clustering", "Klaviyo", "E-commerce"]
+type: "article"
 featured: true
 date: "2025-11-20"
 ---

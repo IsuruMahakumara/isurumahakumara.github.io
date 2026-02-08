@@ -1,0 +1,10 @@
+---
+slug: "pickme-churn-prediction"
+title: "Customer Churn Prediction"
+summary: "Predicting early churn for ride hailing app"
+tags: ["nbviewer", "Jupyter Notebook", "Churn Prediction"]
+type: "nbviewer"
+url : "https://nbviewer.org/github/IsuruMahakumara/pick_me_churn/blob/main/pickme_churn.ipynb"
+featured: true
+date: "2026-01-03"
+---
