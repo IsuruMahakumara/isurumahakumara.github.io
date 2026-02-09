@@ -6,9 +6,10 @@
     "tags": [
       "Live Demo",
       "RAG",
+      "LangChain",
       "Huggingface",
       "LLM",
-      "Pineconde",
+      "Pinecone",
       "Clound Run",
       "Docker"
     ],
